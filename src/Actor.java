@@ -14,8 +14,9 @@ public class Actor {
      * Κατασκευαστής - Constructor
      */
     public Actor(String name, int age) {
-
-
+        this.name = name;
+        this.age = age;
+        movies = new ArrayList<>();
     }
 
     /**
@@ -23,6 +24,7 @@ public class Actor {
      * This method returns the actor's name.
      */
     public String getName() {
+        return name;
     }
 
     /**
@@ -30,6 +32,7 @@ public class Actor {
      * This method returns the actor's age.
      */
     public int getAge() {
+        return age;
     }
 
     /**
@@ -37,6 +40,7 @@ public class Actor {
      * This methods adds a movie to hir/her lists of movies.
      */
     public void addMovie(String title, int duration, int oscars, int budget) {
+        movies.add(new Movie(title,duration,oscars,budget));
     }
 
     /**
@@ -44,6 +48,7 @@ public class Actor {
      * This methods returns the movies the actor has participated.
      */
     public ArrayList<Movie> getMovies() {
+        return movies;
     }
 
     /**
@@ -51,7 +56,12 @@ public class Actor {
      * This method computes the total play time of the actor in long movies (>1 hour)
      */
     public int totalActingTime() {
-
+        int total = 0;
+        for (Movie m: movies) {
+            if (m.getDuration()>60)
+                    total += m.getDuration();
+        }
+        return total;
     }
 
     /**
@@ -61,6 +71,14 @@ public class Actor {
      * participated to the total number of oscar-winning movies he/she participated.
      */
     public double popularity() {
+        int counter = 0;
+        for (Movie m: movies) {
+            if (m.getOscars()>0)
+                counter++;
+        }
+        if (counter==0)
+            return 0;
+        return movies.size()/(double)counter;
 
     }
 }

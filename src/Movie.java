@@ -14,7 +14,10 @@ public class Movie {
      * Κατασκευαστής - Constructor
      */
     public Movie(String title, int duration, int oscars, int budget) {
-
+        this.title = title;
+        this.duration = duration;
+        this.oscars = oscars;
+        this.budget = budget;
     }
 
     /**
@@ -22,7 +25,7 @@ public class Movie {
      * This method returns the movie's title.
      */
     public String getTitle() {
-
+        return title;
     }
 
     /**
@@ -30,7 +33,7 @@ public class Movie {
      * This movie returns the movie's duration.
      */
     public int getDuration() {
-
+        return duration;
     }
 
     /**
@@ -38,7 +41,7 @@ public class Movie {
      * This method returns the total oscars the movie won.
      */
     public int getOscars() {
-
+        return oscars;
     }
 
     /**
@@ -46,7 +49,7 @@ public class Movie {
      * This method returns the total amount spent by the production.
      */
     public int getBudget() {
-
+        return budget;
     }
 
     /**
@@ -55,6 +58,8 @@ public class Movie {
      * double value = (double) value
      */
     public double oscarIndex() {
-
+        if (oscars==0)
+            return 0;
+        return budget/(double)oscars;
     }
 }
